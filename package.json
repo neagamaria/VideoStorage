@@ -1,0 +1,24 @@
+{
+  "name": "videostorage",
+  "version": "1.0.0",
+  "description": "This is NodeJS project that creates a REST API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neagamaria/VideoStorage.git"
+  },
+  "author": "Maria Neaga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neagamaria/VideoStorage/issues"
+  },
+  "homepage": "https://github.com/neagamaria/VideoStorage#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "oracledb": "^6.4.0",
+    "save": "^2.9.0"
+  }
+}
