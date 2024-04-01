@@ -18,7 +18,6 @@
   "homepage": "https://github.com/neagamaria/VideoStorage#readme",
   "dependencies": {
     "express": "^4.19.2",
-    "oracledb": "^6.4.0",
-    "save": "^2.9.0"
+    "mysql": "^2.18.1"
   }
 }
