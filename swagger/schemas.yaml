@@ -1,0 +1,17 @@
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    loginUserDTO:
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    loginResponse:
+      properties:
+        token:
+          type: string
