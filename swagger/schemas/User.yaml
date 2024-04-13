@@ -1,0 +1,17 @@
+type: object
+properties:
+  userID:
+    type: integer
+  name:
+    type: string
+  email:
+    type: string
+  birthDate:
+    type: string
+    format: date
+  phoneNumber:
+    type: integer
+required:
+  - userID
+  - name
+  - email

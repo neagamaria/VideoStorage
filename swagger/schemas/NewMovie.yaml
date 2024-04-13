@@ -1,0 +1,18 @@
+type: object
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 255
+  duration:
+    type: number
+    format: float
+  releaseDate:
+    type: string
+    format: date
+  cast:
+    type: string
+required:
+  - name
+  - duration
+  - releaseDate

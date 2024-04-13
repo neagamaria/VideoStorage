@@ -1,0 +1,16 @@
+type: object
+properties:
+  accessID:
+    type: integer
+  movieID:
+    type: integer
+  accountID:
+    type: integer
+  accessDate:
+    type: string
+    format: date
+required:
+  - accountID
+  - movieID
+  - accountID
+  - accessDate

@@ -1,0 +1,19 @@
+type: object
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 50
+  password:
+    type: string
+    minLength: 5
+  creationDate:
+    type: string
+    format: date
+  userID:
+    type: integer
+required:
+  - name
+  - password
+  - creationDate
+  - userID

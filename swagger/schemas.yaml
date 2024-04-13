@@ -1,17 +1,26 @@
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   schemas:
-    loginUserDTO:
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-    loginResponse:
-      properties:
-        token:
-          type: string
+    User:
+      $ref: './schema/User.yaml'
+    NewUser:
+      $ref: './schema/NewUser.yaml'
+    UpdateUser:
+      $ref: './schema/UpdateUser.yaml'
+    Account:
+      $ref: './schema/Account.yaml'
+    NewAccount:
+      $ref: './schema/NewAccount.yaml'
+    UpdateAccount:
+      $ref: './schema/UpdateAccount.yaml'
+    Movie:
+      $ref: './schema/Movie.yaml'
+    NewMovie:
+      $ref: './schema/NewMovie.yaml'
+    UpdateMovie:
+      $ref: './schema/UpdateMovie.yaml'
+    Access:
+      $ref: './schema/Access.yaml'
+    NewAccess:
+      $ref: './schema/NewAccess.yaml'
+    UpdateAccess:
+      $ref: './schema/UpdateAccess.yaml'

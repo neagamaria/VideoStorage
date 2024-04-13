@@ -1,0 +1,19 @@
+type: object
+properties:
+  movieID:
+    type: integer
+  name:
+    type: string
+  duration:
+    type: number
+    format: float
+  releaseDate:
+    type: string
+    format: date
+  cast:
+    type: string
+required:
+  - movieID
+  - name
+  - duration
+  - releaseDate

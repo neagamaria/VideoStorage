@@ -19,9 +19,12 @@
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
+    "express-validator": "^7.0.1",
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "mysql2": "^3.9.4",
+    "sequelize": "^6.37.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "util": "^0.12.5"

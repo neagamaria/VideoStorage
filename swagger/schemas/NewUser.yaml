@@ -1,0 +1,20 @@
+type: object
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 255
+  email:
+    type: string
+    format: email
+  birthDate:
+    type: string
+    format: date
+  phoneNumber:
+    type: integer
+    minimum: 100000000
+    maximum: 9999999999
+required:
+  - name
+  - email
+  - birthDate

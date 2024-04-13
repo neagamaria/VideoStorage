@@ -1,0 +1,19 @@
+type: object
+properties:
+  accountID:
+    type: integer
+  name:
+    type: string
+  password:
+    type: string
+  creationDate:
+    type: string
+    format: date
+  userID:
+    type: integer
+required:
+  - accountID
+  - name
+  - password
+  - creationDate
+  - userID
