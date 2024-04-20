@@ -1,26 +1,26 @@
 components:
   schemas:
     User:
-      $ref: './schema/User.yaml'
+      $ref: './schemas/User.yaml'
     NewUser:
-      $ref: './schema/NewUser.yaml'
+      $ref: './schemas/NewUser.yaml'
     UpdateUser:
-      $ref: './schema/UpdateUser.yaml'
+      $ref: './schemas/UpdateUser.yaml'
     Account:
-      $ref: './schema/Account.yaml'
+      $ref: './schemas/Account.yaml'
     NewAccount:
-      $ref: './schema/NewAccount.yaml'
+      $ref: './schemas/NewAccount.yaml'
     UpdateAccount:
-      $ref: './schema/UpdateAccount.yaml'
+      $ref: './schemas/UpdateAccount.yaml'
     Movie:
-      $ref: './schema/Movie.yaml'
+      $ref: './schemas/Movie.yaml'
     NewMovie:
-      $ref: './schema/NewMovie.yaml'
+      $ref: './schemas/NewMovie.yaml'
     UpdateMovie:
-      $ref: './schema/UpdateMovie.yaml'
+      $ref: './schemas/UpdateMovie.yaml'
     Access:
-      $ref: './schema/Access.yaml'
+      $ref: './schemas/Access.yaml'
     NewAccess:
-      $ref: './schema/NewAccess.yaml'
+      $ref: './schemas/NewAccess.yaml'
     UpdateAccess:
-      $ref: './schema/UpdateAccess.yaml'
+      $ref: './schemas/UpdateAccess.yaml'

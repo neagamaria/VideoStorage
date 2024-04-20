@@ -21,7 +21,7 @@ const User = connection.define('User', {
     allowNull: true,          
   },
   phoneNumber: {
-    type: DataTypes.BIGINT,
+    type: DataTypes.STRING,
     allowNull: true,
   },
 });

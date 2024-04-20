@@ -1,7 +1,6 @@
-const express = require('express');
-const app = express();
+
 // Error handling middleware
-app.use((err, req, res, next) => {
+const errorHandler = (err, req, res, next) => {
   if (err.name === 'ValidationError') {
     // Handle validation errors
     return res.status(400).json({ message: err.message });
@@ -13,4 +12,7 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: 'Internal server error' });
   }
-});
+};
+
+module.exports = errorHandler;
+

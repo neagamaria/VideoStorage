@@ -14,7 +14,16 @@ exports.getAllUsers = async (req, res, next) => {
 
 exports.createUser = async (req, res, next) => {
   try {
-    const user = await User.create(req.body);
+    const userData = {
+      name: req.body.name,
+      email: req.body.email,
+      birthDate: req.body.birthDate,
+      phoneNumber: req.body.phoneNumber,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+   
+    const user = await User.create(userData);
     res.status(201).json(user);
   } catch (error) {
     next(error);
@@ -40,8 +49,15 @@ exports.updateUser = async (req, res, next) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // new data included in body JSON
-    await user.update(req.body);
+    const userData = {
+      name: req.body.name ?? user.name,
+      email: req.body.email ?? user.email,
+      birthDate: req.body.birthDate ?? user.birthDate,
+      phoneNumber: req.body.phoneNumber ?? user.phoneNumber,
+      updatedAt: new Date()
+    };
+
+    await user.update(userData);
     res.json(user);
   } catch (error) {
     next(error);

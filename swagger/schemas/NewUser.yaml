@@ -11,9 +11,7 @@ properties:
     type: string
     format: date
   phoneNumber:
-    type: integer
-    minimum: 100000000
-    maximum: 9999999999
+    type: string
 required:
   - name
   - email
