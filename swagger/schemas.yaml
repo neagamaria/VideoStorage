@@ -1,7 +1,33 @@
 components:
   schemas:
     User:
-      $ref: './schemas/User.yaml'
+      type: object
+      properties:
+        userID:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        phoneNumber:
+          type: string
+        password:
+          type: string
+        createAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - userID
+        - name
+        - email
+        - password
+        - birthDate
     NewUser:
       $ref: './schemas/NewUser.yaml'
     UpdateUser:
@@ -24,3 +50,10 @@ components:
       $ref: './schemas/NewAccess.yaml'
     UpdateAccess:
       $ref: './schemas/UpdateAccess.yaml'
+
+  securitySchemes:
+    JWTAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Bearer JWT token

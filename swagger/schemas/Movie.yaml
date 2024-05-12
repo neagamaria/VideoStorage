@@ -1,17 +1,25 @@
 type: object
 properties:
-  movieID:
+  movieImageID
     type: integer
-  name:
+  movieID
+    type: integer    
+  name
     type: string
-  duration:
+  path
     type: number
     format: float
-  releaseDate:
+  releaseDate
     type: string
     format: date
-  cast:
+  cast
     type: string
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date    
 required:
   - movieID
   - name

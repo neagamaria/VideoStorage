@@ -1,14 +1,20 @@
 type: object
 properties:
-  accessID:
+  accessID
     type: integer
-  movieID:
+  movieID
     type: integer
-  accountID:
+  accountID
     type: integer
-  accessDate:
+  accessDate
     type: string
     format: date
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date        
 required:
   - accountID
   - movieID

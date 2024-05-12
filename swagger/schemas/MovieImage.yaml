@@ -1,0 +1,19 @@
+
+type: object
+properties:
+  movieID
+    type: integer
+  name
+    type: string
+  path
+    type: string
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date
+required:
+  - movieID
+  - name
+  - path

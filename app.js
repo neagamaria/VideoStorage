@@ -37,14 +37,20 @@ app.get('/', function(req, res) {
 });
 
 const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth');
 const body = require('express-validator');
 // const accountsRouter = require('./routes/accounts');
-// const moviesRouter = require('./routes/movies');
+const moviesRouter = require('./routes/movies');
+const movieImagesRouter = require('./routes/movieImages');
+const categoriesRouter = require('./routes/categories');
 // const accessRouter = require('./routes/access');
 
 app.use('/api/users', usersRouter);
+app.use('/api/auth' , authRouter);
 // app.use('/api/accounts', accountsRouter);
-// app.use('/api/movies', moviesRouter);
+app.use('/api/movies', moviesRouter);
+app.use('/api/movieImages', movieImagesRouter);
+app.use('/api/categories', categoriesRouter);
 // app.use('/api/access', accessRouter);
 
 app.use(errorHandler);

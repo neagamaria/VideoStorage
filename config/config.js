@@ -3,7 +3,8 @@ const config = {
   host     : 'localhost',
   user     : 'maria',
   password : 'maria',
-  database : 'videosdb'
+  database : 'videosdb',
+  jwtSecret: 'videosecret', // for token creation and verification
 };
 
 module.exports = config;

@@ -1,15 +1,20 @@
-type object
-properties
+type: object
+properties:
+  accountID
+    type: integer
   name
     type: string
-    minLength: 1
-    maxLength: 255
-  password:
+  type
     type: string
-    minLength: 5
-  creationDate:
+  creationDate
     type: string
     format: date
-  userID:
-    type: integer
+  userID
+    type: integer  
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date
 required []

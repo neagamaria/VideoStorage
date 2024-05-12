@@ -4,7 +4,7 @@ properties
     type: string
     minLength: 1
     maxLength: 255
-  duration:
+  duration
     type: number
     format: float
   releaseDate
@@ -12,4 +12,12 @@ properties
     format: date
   cast
     type: string
+  categoryID
+    type: number    
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date    
 required []

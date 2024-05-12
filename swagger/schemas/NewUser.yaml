@@ -1,18 +1,27 @@
 type: object
 properties:
-  name:
+  name
     type: string
     minLength: 1
     maxLength: 255
-  email:
+  email
     type: string
     format: email
-  birthDate:
+  birthDate
     type: string
     format: date
-  phoneNumber:
+  phoneNumber
     type: string
+  password
+    type: string
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date    
 required:
   - name
   - email
+  - password
   - birthDate

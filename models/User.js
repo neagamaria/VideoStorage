@@ -24,6 +24,30 @@ const User = connection.define('User', {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  password: {
+    type:  DataTypes.STRING,
+    allowNull: false,
+  },
+  createdAt: {
+    type: DataTypes.DATEONLY, 
+    allowNull: false,          
+  },
+  updatedAt: {
+    type: DataTypes.DATEONLY, 
+    allowNull: false,          
+  }
 });
+
+// User.beforeCreate(async (user, options) => {
+//   const hashedPassword = await bcrypt.hash(user.password, 10);
+//   user.password = hashedPassword;
+// });
+
+// User.beforeUpdate(async (user, options) => {
+//   if (user.changed('password')) {
+//     const hashedPassword = await bcrypt.hash(user.password, 10);
+//     user.password = hashedPassword;
+//   }
+// });
 
 module.exports = User;

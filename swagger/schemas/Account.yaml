@@ -1,19 +1,25 @@
 type: object
 properties:
-  accountID:
+  accountID
     type: integer
-  name:
+  name
     type: string
-  password:
+  type
     type: string
-  creationDate:
+  creationDate
     type: string
     format: date
-  userID:
-    type: integer
+  userID
+    type: integer  
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date
 required:
   - accountID
   - name
-  - password
+  - type
   - creationDate
   - userID

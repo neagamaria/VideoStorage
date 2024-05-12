@@ -1,19 +1,22 @@
 type: object
 properties:
-  name:
+  name
     type: string
-    minLength: 1
-    maxLength: 50
-  password:
+  type
     type: string
-    minLength: 5
-  creationDate:
+  creationDate
     type: string
     format: date
-  userID:
-    type: integer
+  userID
+    type: integer  
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date
 required:
   - name
-  - password
+  - type
   - creationDate
   - userID

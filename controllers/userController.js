@@ -19,6 +19,7 @@ exports.createUser = async (req, res, next) => {
       email: req.body.email,
       birthDate: req.body.birthDate,
       phoneNumber: req.body.phoneNumber,
+      password: req.body.password,
       createdAt: new Date(),
       updatedAt: new Date()
     };
@@ -54,6 +55,7 @@ exports.updateUser = async (req, res, next) => {
       email: req.body.email ?? user.email,
       birthDate: req.body.birthDate ?? user.birthDate,
       phoneNumber: req.body.phoneNumber ?? user.phoneNumber,
+      password: req.body.password ?? user.password,
       updatedAt: new Date()
     };
 

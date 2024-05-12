@@ -1,12 +1,18 @@
 type object
 properties
-  movieID:
+  movieID
     type: integer
-  accountID:
+  accountID
     type: integer
-  accessDate:
+  accessDate
     type: string
     format: date
-  userID:
+  userID
     type: integer
+  createdAt
+    type: string
+    format: date
+  updatedAt
+    type: string
+    format: date        
 required []
