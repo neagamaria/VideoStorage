@@ -11,6 +11,8 @@ const MovieImageController = require('../controllers/movieImageController');
  *   delete:
  *     summary: Delete an image
  *     description: Delete a specific image by its ID.
+ *     security: 
+ *       - JWTAuth: []
  *     parameters:
  *       - in: path
  *         name: movieImageID
@@ -37,7 +39,7 @@ router.delete('/:movieImageID',
       if (!movieImage) {
         return res.status(404).json({ message: 'Image not found' });
       }
-      res.status(204).end();
+      return res.status(204).end();
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }

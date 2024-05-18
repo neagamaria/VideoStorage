@@ -6,7 +6,7 @@ exports.getAllUsers = async (req, res, next) => {
   try {
     // Retrieve all users from the database
     const users = await User.findAll();
-    res.json(users);
+    return res.json(users);
   } catch (error) {
     next(error);
   }
@@ -25,7 +25,7 @@ exports.createUser = async (req, res, next) => {
     };
    
     const user = await User.create(userData);
-    res.status(201).json(user);
+    return res.status(201).json(user);
   } catch (error) {
     next(error);
   }
@@ -37,7 +37,7 @@ exports.getUserById = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.json(user);
+    return res.json(user);
   } catch (error) {
     next(error);
   }
@@ -60,7 +60,7 @@ exports.updateUser = async (req, res, next) => {
     };
 
     await user.update(userData);
-    res.json(user);
+    return res.json(user);
   } catch (error) {
     next(error);
   }
@@ -75,14 +75,14 @@ exports.deleteUser = async (req, res, next) => {
 
     const userID = req.params.userID;
 
-    // // check if there are any associated accounts for the user
-    // const associatedAccounts = await Account.findAll({ where: { userID } });
-    // if (associatedAccounts.length > 0) {
-    //   return res.status(400).json({ message: 'Cannot delete user with associated accounts' });
-    // }
+    // check if there are any associated accounts for the user
+    const associatedAccounts = await Account.findAll({ where: { userID } });
+    if (associatedAccounts.length > 0) {
+      return res.status(400).json({ message: 'Cannot delete user with associated accounts' });
+    }
 
     await user.destroy();
-    res.status(204).end();
+    return res.status(204).end();
   } catch (error) {
     next(error);
   }

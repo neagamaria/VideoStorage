@@ -20,7 +20,7 @@ exports.uploadImage = async (req, res, next) => {
         };
          
         const movieImage = await MovieImage.create(movieImageData);
-        res.status(201).json(movieImage);
+        return movieImage;
       } catch (error) {
         next(error);
       }
@@ -31,7 +31,7 @@ exports.getAllMovieImages = async (req, res, next) => {
       const movieImages = await MovieImage.findAll({
         where : { movieID: req.params.movieID }
       });
-      res.json(movieImages);
+      return movieImages;
     } catch (error) {
       next(error);
     }

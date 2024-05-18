@@ -45,7 +45,7 @@ router.post('/login',
   async (req, res, next) => {
     try {
       const token = await AuthController.signin(req, res, next);    
-      res.status(200).json(token);
+      return res.status(200).json(token);
     } catch (error) {
       next(error); 
     }

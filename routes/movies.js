@@ -31,7 +31,7 @@ router.get('/',
   async (req, res, next) => {
   try {
     const movies = await MovieController.getAllMovies(req, res, next);
-    res.status(200).json(movies);
+    return res.status(200).json(movies);
   } catch (error) {
     next(error); // Pass the error to the error handling middleware
   }
@@ -71,7 +71,7 @@ router.get('/:movieID',
       if (!movie) {
         return res.status(404).json({ message: 'Movie not found' });
       }
-      res.status(200).json(movie);
+      return res.status(200).json(movie);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -84,6 +84,8 @@ router.get('/:movieID',
  *   post:
  *     summary: Create a new movie
  *     description: Create a new movie with the provided details.
+ *     security: 
+ *       - JWTAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -109,7 +111,7 @@ router.post('/',
         return res.status(401).json({ message: 'User not authorized' });
       }
       const movie = await MovieController.createMovie(req, res, next);
-      res.status(201).json(movie);
+      return res.status(201).json(movie);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -122,6 +124,8 @@ router.post('/',
  *   delete:
  *     summary: Delete a movie
  *     description: Delete a specific movie by its ID.
+ *     security: 
+ *       - JWTAuth: []
  *     parameters:
  *       - in: path
  *         name: movieID
@@ -148,7 +152,7 @@ router.delete('/:movieID',
       if (!movie) {
         return res.status(404).json({ message: 'Movie not found' });
       }
-      res.status(204).end();
+      return res.status(204).end();
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -161,6 +165,8 @@ router.delete('/:movieID',
  *   put:
  *     summary: Update a movie
  *     description: Update the details of a specific movie by its ID.
+ *     security: 
+ *       - JWTAuth: []
  *     parameters:
  *       - in: path
  *         name: movieID
@@ -182,6 +188,7 @@ router.delete('/:movieID',
  */
 router.put('/:movieID',
   param('movieID').isInt().withMessage('Movie ID must be an integer'),
+  param('categoryID').optional({ checkFalsy: true }).isInt().withMessage('Category ID must be an integer'),
   body('releaseDate').optional({ checkFalsy: true }).isInt().withMessage('Invalid release date format. Use YYYY format.'),
   validateRequest,
   validateToken,
@@ -190,11 +197,11 @@ router.put('/:movieID',
       if(req.user.email != "admin@gmail.com") {
         return res.status(401).json({ message: 'User not authorized' });
       }
-      const movie = await UserController.updateMovie(req, res, next);
+      const movie = await MovieController.updateMovie(req, res, next);
       if (!movie) {
         return res.status(404).json({ message: 'Movie not found' });
       }
-      res.status(200).json(movie);
+      return res.status(200).json(movie);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -235,7 +242,7 @@ router.put('/:movieID',
 router.get('/pagination', async (req, res, next) => {
   try {
     const movies = await MovieController.getMoviesWithPagination(req, res, next);
-    res.json(movies);
+    return res.status(200).json(movies);
   } catch (error) {
     next(error);
   }
@@ -259,6 +266,8 @@ const upload = multer({ storage: storage });
  *   post:
  *     summary: Upload an image for a movie
  *     description: Upload an image file for a specific movie.
+ *     security: 
+ *       - JWTAuth: []
  *     parameters:
  *       - in: path
  *         name: movieID
@@ -302,7 +311,7 @@ router.post('/:movieID/images',
         req.body.path = path;
 
         const movieImage = await MovieImageController.uploadImage(req, res, next);
-        res.json({ message: 'Image uploaded successfully', movieImage });
+        return res.status(200).json({ message: 'Image uploaded successfully', movieImage });
       } catch (error) {
         next(error);
       }
@@ -339,7 +348,7 @@ router.get('/:movieId/images',
   async (req, res, next) => {
   try {
     const movieImages = await MovieImageController.getAllMovieImages(req, res, next);
-    res.json(movieImages);
+    return res.status(200).json(movieImages);
   } catch (error) {
     next(error);
   }

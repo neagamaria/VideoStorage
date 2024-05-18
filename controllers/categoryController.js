@@ -6,7 +6,7 @@ exports.getAllCategories = async (req, res, next) => {
     try {
       // Retrieve all categories from the database
       const categories = await Category.findAll();
-      res.json(categories);
+      return categories;
     } catch (error) {
       next(error);
     }
@@ -22,7 +22,7 @@ exports.getAllCategories = async (req, res, next) => {
       };
      
       const category = await Category.create(categoryData);
-      res.status(201).json(category);
+      return category;
     } catch (error) {
       next(error);
     }
@@ -34,7 +34,7 @@ exports.getAllCategories = async (req, res, next) => {
       if (!category) {
         return res.status(404).json({ message: 'Category not found' });
       }
-      res.json(category);
+      return category;
     } catch (error) {
       next(error);
     }
@@ -49,12 +49,12 @@ exports.getAllCategories = async (req, res, next) => {
   
       const categoryData = {
         name: req.body.name ?? category.name,
-        description: req.body.email ?? category.email,
+        description: req.body.description ?? category.description,
         updatedAt: new Date()
       };
   
       await category.update(categoryData);
-      res.json(category);
+      return category;
     } catch (error) {
       next(error);
     }
@@ -73,7 +73,7 @@ exports.getAllCategories = async (req, res, next) => {
       }
   
       await category.destroy();
-      res.status(204).end();
+      return res.status(204).end();
     } catch (error) {
       next(error);
     }

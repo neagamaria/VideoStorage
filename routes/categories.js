@@ -29,7 +29,7 @@ router.get('/',
   try {
     const categories = await CategoryController.getAllCategories(req, res, next);
     console.log(categories);
-    res.status(200).json(categories);
+    return res.status(200).json(categories);
   } catch (error) {
     next(error); // Pass the error to the error handling middleware
   }
@@ -69,7 +69,7 @@ router.get('/:categoryID',
       if (!category) {
         return res.status(404).json({ message: 'Category not found' });
       }
-      res.status(200).json(category);
+      return res.status(200).json(category);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -82,6 +82,8 @@ router.get('/:categoryID',
  *   post:
  *     summary: Create a new category
  *     description: Create a new category with the provided details.
+ *     security: 
+ *       - JWTAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -104,7 +106,7 @@ router.post('/',
         return res.status(401).json({ message: 'User not authorized' });
       }
       const category = await CategoryController.createCategory(req, res, next);
-      res.status(201).json(category);
+      return res.status(201).json(category);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -117,6 +119,8 @@ router.post('/',
  *   delete:
  *     summary: Delete a category
  *     description: Delete a specific category by their ID.
+ *     security: 
+ *       - JWTAuth: []
  *     parameters:
  *       - in: path
  *         name: categoryID
@@ -143,7 +147,7 @@ router.delete('/:categoryID',
       if (!category) {
         return res.status(404).json({ message: 'Category not found' });
       }
-      res.status(204).end();
+      return res.status(204).end();
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -156,6 +160,8 @@ router.delete('/:categoryID',
  *   put:
  *     summary: Update a category
  *     description: Update the details of a specific category by their ID.
+ *     security: 
+ *       - JWTAuth: []
  *     parameters:
  *       - in: path
  *         name: categoryID
@@ -185,7 +191,7 @@ router.put('/:categoryID',
       if (!category) {
         return res.status(404).json({ message: 'Category not found' });
       }
-      res.status(200).json(category);
+      return res.status(200).json(category);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }

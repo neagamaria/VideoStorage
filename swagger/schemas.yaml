@@ -28,28 +28,276 @@ components:
         - email
         - password
         - birthDate
+
     NewUser:
-      $ref: './schemas/NewUser.yaml'
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        birthDate:
+          type: string
+          format: date
+        phoneNumber:
+          type: string
+        password:
+          type: string
+      required:
+        - name
+        - email
+        - password
+        - birthDate
+
     UpdateUser:
-      $ref: './schemas/UpdateUser.yaml'
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        birthDate:
+          type: string
+          format: date
+        phoneNumber:
+          type: string
+        password:
+          type: string
+      required: []
+
     Account:
-      $ref: './schemas/Account.yaml'
+      type: object
+      properties:
+        accountID:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        userID:
+          type: integer  
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - accountID
+        - name
+        - type
+        - creationDate
+        - userID
+
     NewAccount:
-      $ref: './schemas/NewAccount.yaml'
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        userID:
+          type: integer  
+      required:
+        - name
+        - type
+        - creationDate
+        - userID
+
     UpdateAccount:
-      $ref: './schemas/UpdateAccount.yaml'
+      type: object
+      properties:
+        accountID:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        userID:
+          type: integer  
+      required: []
+
     Movie:
-      $ref: './schemas/Movie.yaml'
+      type: object
+      properties:
+        movieID:
+          type: integer    
+        name:
+          type: string
+        path:
+          type: number
+          format: float
+        releaseDate:
+          type: integer
+        cast:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date    
+      required:
+        - movieID
+        - name
+        - duration
+        - releaseDate
+
     NewMovie:
-      $ref: './schemas/NewMovie.yaml'
+      type: object
+      properties:
+        name:
+          type: string
+        duration:
+          type: number
+          format: float
+        releaseDate:
+          type: integer
+        cast:
+          type: string
+        categoryID:
+          type: integer    
+      required:
+        - name
+        - duration
+        - releaseDate
+
     UpdateMovie:
-      $ref: './schemas/UpdateMovie.yaml'
+      type: object
+      properties:
+        name:
+          type: string
+        duration:
+          type: number
+          format: float
+        releaseDate:
+          type: integer
+        cast:
+          type: string
+        categoryID:
+          type: integer    
+      required: []
+
     Access:
-      $ref: './schemas/Access.yaml'
+      type: object
+      properties:
+        accessID:
+          type: integer
+        movieID:
+          type: integer
+        accountID:
+          type: integer
+        accessDate:
+          type: string
+          format: date
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date        
+      required:
+        - accountID
+        - movieID
+        - accountID
+        - accessDate
+
     NewAccess:
-      $ref: './schemas/NewAccess.yaml'
+      type: object
+      properties:
+        movieID:
+          type: integer
+        accountID:
+          type: integer
+        accessDate:
+          type: string
+          format: date
+      required:
+        - movieID
+        - accountID
+        - accessDate
+
     UpdateAccess:
-      $ref: './schemas/UpdateAccess.yaml'
+      type: object
+      properties:
+        movieID:
+          type: integer
+        accountID:
+          type: integer
+        accessDate:
+          type: string
+          format: date
+        userID:
+          type: integer
+      required: []
+
+    Category:
+      type: object
+      properties:
+        categoryID:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date        
+      required:
+        - categoryID
+        - name
+    
+    NewCategory:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type : string       
+      required:
+        - name
+
+    UpdateCategory:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string       
+      required: []
+
+    MovieImage:
+      type: object
+      properties:
+        movieID:
+          type: integer
+        path:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - movieID
+        - name
+        - path
+
 
   securitySchemes:
     JWTAuth:

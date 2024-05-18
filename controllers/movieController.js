@@ -1,4 +1,5 @@
 const Movie = require('../models/Movie');
+const MovieImage = require('../models/MovieImage');
 const Category = require('../models/Category');
 
 // all db operations use Sequelize ORM
@@ -6,7 +7,7 @@ exports.getAllMovies = async (req, res, next) => {
   try {
     // Retrieve all movies from the database
     const movies = await Movie.findAll();
-    res.json(movies);
+    return movies;
   } catch (error) {
     next(error);
   }
@@ -30,7 +31,7 @@ exports.createMovie = async (req, res, next) => {
     };
      
     const movie = await Movie.create(movieData);
-    res.status(201).json(movie);
+    return movie;
   } catch (error) {
     next(error);
   }
@@ -40,9 +41,9 @@ exports.getMovieById = async (req, res, next) => {
   try {
     const movie = await Movie.findByPk(req.params.movieID);
     if (!movie) {
-      return res.status(404).json({ message: 'Movie not found' });
+      return null;
     }
-    res.json(movie);
+    return movie;
   } catch (error) {
     next(error);
   }
@@ -55,9 +56,11 @@ exports.updateMovie = async (req, res, next) => {
       return res.status(404).json({ message: 'Movie not found' });
     }
 
-    const category = await Category.findByPk(req.body.categoryID);
-    if(!category) {
-        return res.status(404).json({ message: 'Category not found' });
+    if(req.body.categoryID) {
+      const category = await Category.findByPk(req.body.categoryID);
+      if(!category) {
+          return res.status(404).json({ message: 'Category not found' });
+      }
     }
 
     const movieData = {
@@ -70,7 +73,7 @@ exports.updateMovie = async (req, res, next) => {
     };
 
     await movie.update(movieData);
-    res.json(movie);
+    return movie;
   } catch (error) {
     next(error);
   }
@@ -84,12 +87,12 @@ exports.deleteMovie = async (req, res, next) => {
     }
 
     const movieImages = await MovieImage.findAll({ where: { movieID : req.params.movieID } });
-      if (movies.length > 0) {
+      if (movieImages!=null && movieImages.length > 0) {
         return res.status(400).json({ message: 'Cannot delete movie with associated images' });
       }
 
     await movie.destroy();
-    res.status(204).end();
+    return res.status(204).end();
   } catch (error) {
     next(error);
   }
@@ -98,7 +101,13 @@ exports.deleteMovie = async (req, res, next) => {
 //pagination for get recent movies
 exports.getMoviesWithPagination = async (req, res, next) => {
   try {
-    const { page = 1, pageSize = 10 } = req.query;
+    const page = parseInt(req.query.page, 10) || 1;
+    const pageSize = parseInt(req.query.pageSize, 10) || 10;
+
+    // Validate that page and pageSize are positive integers
+    if (page < 1) page = 1;
+    if (pageSize < 1) pageSize = 10;
+
     const offset = (page - 1) * pageSize;
     const movies = await Movie.findAndCountAll({
       offset,

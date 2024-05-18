@@ -80,7 +80,7 @@ router.get('/:userID',
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-      res.status(200).json(user);
+      return res.status(200).json(user);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -119,7 +119,7 @@ router.post('/',
   async (req, res, next) => {
     try {
       const user = await UserController.createUser(req, res, next);
-      res.status(201).json(user);
+      return res.status(201).json(user);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -160,7 +160,7 @@ router.delete('/:userID',
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-      res.status(204).end();
+      return res.status(204).end();
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
@@ -210,7 +210,7 @@ router.put('/:userID',
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-      res.status(200).json(user);
+      return res.status(200).json(user);
     } catch (error) {
       next(error); // Pass the error to the error handling middleware
     }
