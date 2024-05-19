@@ -22,7 +22,9 @@ The following API calls are performed:
 - get movie by ID
 - get all images for the movie with a given ID
 
+
 ### The flow of actions for an user which was previously signed up
+
 ![image](https://github.com/neagamaria/VideoStorage/assets/92460510/6986f690-42fd-4bbc-b80b-4263900a127d)
 
 The following API calls are performed:
