@@ -210,7 +210,7 @@ router.put('/:movieID',
 
 /**
  * @swagger
- * /api/movies/pagination:
+ * /api/movies/pagination/{page}/{pageSize}:
  *   get:
  *     summary: Get all movies with pagination, order by most recent first
  *     description: Retrieve a list of all movies.
@@ -239,7 +239,11 @@ router.put('/:movieID',
  *       500:
  *         description: Internal server error.
  */
-router.get('/pagination', async (req, res, next) => {
+router.get('/pagination/:page/:pageSize', 
+param('page').isInt().withMessage('Page must be an integer'),
+param('pageSize').isInt().withMessage('Page size must be an integer'),
+validateRequest,
+async (req, res, next) => {
   try {
     const movies = await MovieController.getMoviesWithPagination(req, res, next);
     return res.status(200).json(movies);

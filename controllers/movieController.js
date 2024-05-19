@@ -101,8 +101,8 @@ exports.deleteMovie = async (req, res, next) => {
 //pagination for get recent movies
 exports.getMoviesWithPagination = async (req, res, next) => {
   try {
-    const page = parseInt(req.query.page, 10) || 1;
-    const pageSize = parseInt(req.query.pageSize, 10) || 10;
+    const page = parseInt(req.params.page, 10) || 1;
+    const pageSize = parseInt(req.params.pageSize, 10) || 10;
 
     // Validate that page and pageSize are positive integers
     if (page < 1) page = 1;
@@ -114,7 +114,7 @@ exports.getMoviesWithPagination = async (req, res, next) => {
       limit: pageSize,
       order: [['releaseDate', 'DESC']] 
     });
-    res.json({
+    return res.json({
       total: movies.count,
       totalPages: Math.ceil(movies.count / pageSize),
       currentPage: parseInt(page),
