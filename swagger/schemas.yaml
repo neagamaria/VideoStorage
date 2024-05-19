@@ -1,0 +1,307 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        userID:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        phoneNumber:
+          type: string
+        password:
+          type: string
+        createAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - userID
+        - name
+        - email
+        - password
+        - birthDate
+
+    NewUser:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        birthDate:
+          type: string
+          format: date
+        phoneNumber:
+          type: string
+        password:
+          type: string
+      required:
+        - name
+        - email
+        - password
+        - birthDate
+
+    UpdateUser:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        birthDate:
+          type: string
+          format: date
+        phoneNumber:
+          type: string
+        password:
+          type: string
+      required: []
+
+    Account:
+      type: object
+      properties:
+        accountID:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        userID:
+          type: integer  
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - accountID
+        - name
+        - type
+        - creationDate
+        - userID
+
+    NewAccount:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        userID:
+          type: integer  
+      required:
+        - name
+        - type
+        - creationDate
+        - userID
+
+    UpdateAccount:
+      type: object
+      properties:
+        accountID:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        userID:
+          type: integer  
+      required: []
+
+    Movie:
+      type: object
+      properties:
+        movieID:
+          type: integer    
+        name:
+          type: string
+        path:
+          type: number
+          format: float
+        releaseDate:
+          type: integer
+        cast:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date    
+      required:
+        - movieID
+        - name
+        - duration
+        - releaseDate
+
+    NewMovie:
+      type: object
+      properties:
+        name:
+          type: string
+        duration:
+          type: number
+          format: float
+        releaseDate:
+          type: integer
+        cast:
+          type: string
+        categoryID:
+          type: integer    
+      required:
+        - name
+        - duration
+        - releaseDate
+
+    UpdateMovie:
+      type: object
+      properties:
+        name:
+          type: string
+        duration:
+          type: number
+          format: float
+        releaseDate:
+          type: integer
+        cast:
+          type: string
+        categoryID:
+          type: integer    
+      required: []
+
+    Access:
+      type: object
+      properties:
+        accessID:
+          type: integer
+        movieID:
+          type: integer
+        accountID:
+          type: integer
+        accessDate:
+          type: string
+          format: date
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date        
+      required:
+        - accountID
+        - movieID
+        - accountID
+        - accessDate
+
+    NewAccess:
+      type: object
+      properties:
+        movieID:
+          type: integer
+        accountID:
+          type: integer
+        accessDate:
+          type: string
+          format: date
+      required:
+        - movieID
+        - accountID
+        - accessDate
+
+    UpdateAccess:
+      type: object
+      properties:
+        movieID:
+          type: integer
+        accountID:
+          type: integer
+        accessDate:
+          type: string
+          format: date
+        userID:
+          type: integer
+      required: []
+
+    Category:
+      type: object
+      properties:
+        categoryID:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date        
+      required:
+        - categoryID
+        - name
+    
+    NewCategory:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type : string       
+      required:
+        - name
+
+    UpdateCategory:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string       
+      required: []
+
+    MovieImage:
+      type: object
+      properties:
+        movieID:
+          type: integer
+        path:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - movieID
+        - name
+        - path
+
+
+  securitySchemes:
+    JWTAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Bearer JWT token
