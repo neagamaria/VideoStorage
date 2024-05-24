@@ -82,7 +82,7 @@ router.get('/:userID',
       }
       return res.status(200).json(user);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
@@ -115,13 +115,13 @@ router.post('/',
   body('birthDate').isISO8601().withMessage('Invalid birth date format. Use YYYY-MM-DD format.'),
   body('birthDate').isAfter('1900-01-01').withMessage('Invalid birth date.'),
   body('password').notEmpty().withMessage('Password is required'),
-  validateRequest, //custom validation middleware
+  validateRequest, 
   async (req, res, next) => {
     try {
       const user = await UserController.createUser(req, res, next);
       return res.status(201).json(user);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
@@ -162,7 +162,7 @@ router.delete('/:userID',
       }
       return res.status(204).end();
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error);
     }
   }
 );
@@ -212,7 +212,7 @@ router.put('/:userID',
       }
       return res.status(200).json(user);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error);
     }
   }
 );

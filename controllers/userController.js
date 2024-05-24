@@ -1,10 +1,7 @@
 const User = require('../models/User');
-// const Account = require('../models/Account');
 
-// all db operations use Sequelize ORM
 exports.getAllUsers = async (req, res, next) => {
   try {
-    // Retrieve all users from the database
     const users = await User.findAll();
     return res.json(users);
   } catch (error) {

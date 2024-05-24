@@ -1,14 +1,14 @@
 
-// Error handling middleware
+// error handling middleware
 const errorHandler = (err, req, res, next) => {
   if (err.name === 'ValidationError') {
-    // Handle validation errors
+    // handle the validation errors
     return res.status(400).json({ message: err.message });
   } else if (err.name === 'UnauthorizedError') {
-    // Handle unauthorized errors (e.g., authentication failures)
+    // handle unauthorized errors
     return res.status(401).json({ message: 'Unauthorized' });
   } else {
-    // Handle other types of errors (e.g., database errors)
+    // handle other types of errors
     console.error(err.stack);
     res.status(500).json({ message: 'Internal server error' });
   }

@@ -6,7 +6,7 @@ jest.mock('../models/User');
 
 describe('createUser', () => {
   afterEach(() => {
-    jest.clearAllMocks(); // Clear any mocked calls
+    jest.clearAllMocks(); // clear any mocked calls
   });
   
   test('should create a new user', async () => {

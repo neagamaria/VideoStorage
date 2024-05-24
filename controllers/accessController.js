@@ -5,7 +5,7 @@ const Account = require('../models/Account');
 // all db operations use Sequelize ORM
 exports.getAllAccesses = async (req, res, next) => {
     try {
-      // Retrieve all categories from the database
+      // retrieve all categories from the database
       const accesses = await Access.findAll();
       return accesses;
     } catch (error) {

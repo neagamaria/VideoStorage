@@ -346,7 +346,7 @@ router.post('/:movieID/images',
  *       500:
  *         description: Internal server error.
  */
-router.get('/:movieId/images', 
+router.get('/:movieID/images', 
   param('movieID').isInt().withMessage('Movie ID must be an integer'),
   validateRequest,
   async (req, res, next) => {
