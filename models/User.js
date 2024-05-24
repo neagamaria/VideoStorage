@@ -38,16 +38,5 @@ const User = connection.define('User', {
   }
 });
 
-// User.beforeCreate(async (user, options) => {
-//   const hashedPassword = await bcrypt.hash(user.password, 10);
-//   user.password = hashedPassword;
-// });
-
-// User.beforeUpdate(async (user, options) => {
-//   if (user.changed('password')) {
-//     const hashedPassword = await bcrypt.hash(user.password, 10);
-//     user.password = hashedPassword;
-//   }
-// });
 
 module.exports = User;

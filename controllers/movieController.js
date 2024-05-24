@@ -2,10 +2,9 @@ const Movie = require('../models/Movie');
 const MovieImage = require('../models/MovieImage');
 const Category = require('../models/Category');
 
-// all db operations use Sequelize ORM
+
 exports.getAllMovies = async (req, res, next) => {
   try {
-    // Retrieve all movies from the database
     const movies = await Movie.findAll();
     return movies;
   } catch (error) {
@@ -98,13 +97,13 @@ exports.deleteMovie = async (req, res, next) => {
   }
 };
 
-//pagination for get recent movies
+// pagination to get recent movies
 exports.getMoviesWithPagination = async (req, res, next) => {
   try {
     const page = parseInt(req.params.page, 10) || 1;
     const pageSize = parseInt(req.params.pageSize, 10) || 10;
 
-    // Validate that page and pageSize are positive integers
+    // validate that page and pageSize
     if (page < 1) page = 1;
     if (pageSize < 1) pageSize = 10;
 

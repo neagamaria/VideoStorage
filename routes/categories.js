@@ -31,7 +31,7 @@ router.get('/',
     console.log(categories);
     return res.status(200).json(categories);
   } catch (error) {
-    next(error); // Pass the error to the error handling middleware
+    next(error); 
   }
 });
 
@@ -71,7 +71,7 @@ router.get('/:categoryID',
       }
       return res.status(200).json(category);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
@@ -98,7 +98,7 @@ router.get('/:categoryID',
  */
 router.post('/', 
   body('name').notEmpty().withMessage('Name is required'),
-  validateRequest, //custom validation middleware
+  validateRequest,
   validateToken,
   async (req, res, next) => {
     try {
@@ -108,7 +108,7 @@ router.post('/',
       const category = await CategoryController.createCategory(req, res, next);
       return res.status(201).json(category);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
@@ -149,7 +149,7 @@ router.delete('/:categoryID',
       }
       return res.status(204).end();
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
@@ -193,7 +193,7 @@ router.put('/:categoryID',
       }
       return res.status(200).json(category);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );

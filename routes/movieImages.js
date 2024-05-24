@@ -41,7 +41,7 @@ router.delete('/:movieImageID',
       }
       return res.status(204).end();
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error);
     }
   }
 );

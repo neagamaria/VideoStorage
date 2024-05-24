@@ -37,7 +37,6 @@ const router = express.Router();
  *         description: An error occurred / Internal server error.
  */
 router.post('/login',
-  // Validation middleware using express-validator
   body('email').notEmpty().withMessage('Email is required'),
   body('email').isEmail().withMessage('Invalid email address'),
   body('password').notEmpty().withMessage('Password is required'),

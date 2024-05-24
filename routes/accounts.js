@@ -82,7 +82,7 @@ router.get('/:accountID',
       }
       return res.status(200).json(account);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
@@ -122,7 +122,7 @@ router.post('/',
       const account = await AccountController.createAccount(req, res, next);
       return res.status(201).json(account);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
@@ -163,7 +163,7 @@ router.delete('/:accountID',
       }
       return res.status(204).end();
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
@@ -211,7 +211,7 @@ router.put('/:accountID',
       }
       return res.status(200).json(account);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );

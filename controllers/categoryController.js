@@ -1,10 +1,9 @@
 const Category = require('../models/Category');
 const Movie = require('../models/Movie');
 
-// all db operations use Sequelize ORM
+
 exports.getAllCategories = async (req, res, next) => {
     try {
-      // Retrieve all categories from the database
       const categories = await Category.findAll();
       return categories;
     } catch (error) {

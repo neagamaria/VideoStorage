@@ -2,7 +2,6 @@ var express = require('express');
 var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var swaggerUi = require("swagger-ui-express");
-//@ts-ignore
 var swaggerJsdoc = require("swagger-jsdoc");
 
 const options = {
@@ -13,7 +12,7 @@ const options = {
             version: "1.0.0",
         },
     },
-    apis: ["./routes/*.js", "./swagger/schemas.yaml"], // files containing annotations as above
+    apis: ["./routes/*.js", "./swagger/schemas.yaml"],
 };
 
 const openapiSpecification = swaggerJsdoc(options);
@@ -21,15 +20,14 @@ const errorHandler = require('./middlewares/errorHandler');
 
 var app = express();
 
-// Middleware for JSON parsing
+// middleware for JSON parsing
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true })); // If you need to parse URL-encoded bodies
 
-// Middleware for cookie parsing and logging if necessary
+// middleware for cookie parsing and logging if necessary
 app.use(cookieParser());
 app.use(logger('dev'));
 
-// Swagger UI middleware
+// swagger UI middleware
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 app.get('/', function(req, res) {

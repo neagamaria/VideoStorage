@@ -32,7 +32,7 @@ router.get('/',
     const accesses = await AccessController.getAllAccesses(req, res, next);
     return res.status(200).json(accesses);
   } catch (error) {
-    next(error); // Pass the error to the error handling middleware
+    next(error); 
   }
 });
 
@@ -61,14 +61,14 @@ router.post('/',
   body('accountID').notEmpty().withMessage('Account ID is required'),
   body('accessDate').notEmpty().withMessage('Access date is required'),   
   body('accessDate').isISO8601().withMessage('Invalid access date format. Use YYYY-MM-DD hh:mm:ss format.'),   
-  validateRequest, //custom validation middleware
+  validateRequest, 
   validateToken,
   async (req, res, next) => {
     try {
       const access = await AccessController.createAccess(req, res, next);
       return res.status(201).json(access);
     } catch (error) {
-      next(error); // Pass the error to the error handling middleware
+      next(error); 
     }
   }
 );
